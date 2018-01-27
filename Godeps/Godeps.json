@@ -1,0 +1,22 @@
+{
+	"ImportPath": "github.com/mchmarny/rester-tester",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/google/uuid",
+			"Comment": "0.2-15-g8c31c18",
+			"Rev": "8c31c18f31ede9fc8eae72290a7e7a8064e9b3e3"
+		},
+		{
+			"ImportPath": "github.com/gorilla/handlers",
+			"Comment": "v1.2.1-1-ga4d79d4",
+			"Rev": "a4d79d4487c2430a17d9dc8a1f74d1a6ed6908ca"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.6.1-10-gc0091a0",
+			"Rev": "c0091a029979286890368b4c7b301261e448e242"
+		}
+	]
+}

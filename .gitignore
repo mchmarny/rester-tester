@@ -1,14 +1,34 @@
-# Binaries for programs and plugins
-*.exe
-*.dll
-*.so
-*.dylib
+venv
+.idea
+*.iml
+*.pyc
+nosetests.xml
+gotest.out
+tests.xml
+*_local.py
+build
+dist
+capper.egg-info
+logs/*
+supervisord.pid
+.ropeproject
+.zone
+.vagrant/*
+.vscode/*
+.dev
+.DS_Store
 
-# Test binary, build with `go test -c`
-*.test
+## Coverage Files
+cover.out
+coverage.xml
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+!**/.gitkeep
 
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
-.glide/
+## don't commit local config override files
+config_local.py
+bin/
+vendor/*
+
+## bin
+rester-tester
+
