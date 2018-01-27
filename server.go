@@ -37,10 +37,11 @@ func main() {
 	ping.LoadRouts(router)
 
 	httpserver := &http.Server{
-		Addr:         fmt.Sprintf(":%d", *port),
+		Addr:         fmt.Sprintf("0.0.0.0:%d", *port),
 		Handler:      handlers.CombinedLoggingHandler(os.Stdout, router),
-		ReadTimeout:  60 * time.Second,
-		WriteTimeout: 60 * time.Second,
+		WriteTimeout: time.Second * 15,
+		ReadTimeout:  time.Second * 15,
+		IdleTimeout:  time.Second * 60,
 	}
 
 	go func() {
@@ -54,6 +55,7 @@ func main() {
 
 	logger.Printf("Shutdown down server on port: %d", *port)
 	httpserver.Shutdown(context.Background())
+	os.Exit(0)
 
 }
 

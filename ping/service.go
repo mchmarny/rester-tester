@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/gorilla/mux"
+	"github.com/mchmarny/rester-tester/util"
 )
 
 var (
@@ -19,10 +19,15 @@ var (
 // LoadRouts loads routes to the passed in router
 func LoadRouts(router *mux.Router) {
 
-	id, _ := uuid.NewRandom()
+	host, err := os.Hostname()
+	if err != nil {
+		host = "undefined"
+	}
+
 	stateInstance = &state{
-		ID: id.String(),
-		TS: time.Now().UTC().String(),
+		ID:   util.GetUUIDv4(),
+		Host: host,
+		Ts:   time.Now().UTC().String(),
 	}
 
 	router.HandleFunc("/ping", getEndpoint).Methods("GET")
@@ -37,6 +42,7 @@ type resp struct {
 }
 
 type state struct {
-	ID string `json:"service_id"`
-	TS string `json:"created_at"`
+	ID   string `json:"service_id"`
+	Host string `json:"host_name"`
+	Ts   string `json:"started_at"`
 }
