@@ -11,6 +11,13 @@ docker build -t rester-tester .
 docker run -p 8080:8080 rester-tester:latest
 ```
 
+### Ping
+Basic GET test
+
+```
+curl http://localhost:8080/ping
+```
+
 ### Image
 
 Makes PNG thumbnail from video. To test, pass URL using Curl
