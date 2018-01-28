@@ -27,11 +27,11 @@ deps:
 	godep restore
 
 gcr:
-	gcloud container builds submit --tag gcr.io/$(GCP_PROJECT_NAME)/$(BINARY_NAME):latest" .
+	gcloud container builds submit --tag gcr.io/$(GCP_PROJECT_NAME)/$(BINARY_NAME):latest .
 
 docker:
-	docker build -t server-starter .
+	docker build -t $(BINARY_NAME) .
+	# docker run -p 8080:8080 server-starter:latest
 	docker tag $(BINARY_NAME):latest $(DOCKER_USERNAME)/$(BINARY_NAME):latest
-	docker push $(DOCKER_USERNAME)/$(BINARY_NAME):latest"
-
+	docker push $(DOCKER_USERNAME)/$(BINARY_NAME):latest
 
