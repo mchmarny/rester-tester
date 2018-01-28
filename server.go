@@ -14,6 +14,7 @@ import (
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/mchmarny/rester-tester/image"
 	"github.com/mchmarny/rester-tester/ping"
 )
 
@@ -35,6 +36,7 @@ func main() {
 	router.HandleFunc("/_ah/health", healthCheckHandler)
 
 	ping.LoadRouts(router)
+	image.LoadRouts(router)
 
 	httpserver := &http.Server{
 		Addr:         fmt.Sprintf("0.0.0.0:%d", *port),

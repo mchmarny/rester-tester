@@ -34,6 +34,7 @@ func LoadRouts(router *mux.Router) {
 }
 
 func getEndpoint(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(&resp{Content: *stateInstance})
 }
 

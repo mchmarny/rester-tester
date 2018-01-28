@@ -1,4 +1,8 @@
 FROM golang
+MAINTAINER Mark Chmarny <mark@chmarny.com>
+
+# get ffmpeg
+RUN apk add --no-cache ffmpeg
 
 # if app includes templates and static resources
 # it may be easier to run out of the source folder 

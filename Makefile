@@ -19,8 +19,8 @@ clean:
 	go clean
 	rm -f ./bin/$(BINARY_NAME)
 
-run:
-	go run *.go
+run: build
+	bin/$(BINARY_NAME) --port 8888
 
 deps:
 	go get -u github.com/tools/godep
