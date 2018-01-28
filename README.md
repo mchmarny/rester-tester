@@ -14,11 +14,15 @@ docker run -p 8080:8080 rester-tester:latest
 ### Ping
 Basic GET test
 
+##### Request
+
 ```
 curl http://localhost:8080/ping
+```
 
-resp:
+##### Response
 
+```
 {
      "pong": {
           "service_id": "1f6f4f35-1ef5-4c27-b69c-b34652544229",
