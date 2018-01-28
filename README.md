@@ -16,6 +16,16 @@ Basic GET test
 
 ```
 curl http://localhost:8080/ping
+
+resp:
+
+{
+     "pong": {
+          "service_id": "1f6f4f35-1ef5-4c27-b69c-b34652544229",
+          "host_name": "056504ae4039",
+          "started_at": "2018-01-28 18:22:32.383411901 +0000 UTC"
+     }
+}
 ```
 
 ### Image
