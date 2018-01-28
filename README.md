@@ -41,6 +41,10 @@ curl -X POST -H "Content-Type: application/json" http://localhost:8080/image \
      -d '{"src":"https://www.youtube.com/watch?v=DjByja9ejTQ"}'     
 ```
 
+```
+{"request_id":"b8845f04-c462-4f3e-91d7-6d512c576e23","created_at":"2018-01-28 18:25:06.475802091 +0000 UTC","status":"Processed","req":{"src":"https://www.youtube.com/watch?v=DjByja9ejTQ","width":200,"height":200},"message":"Processing...","thumbnail":"/tmp/b8845f04-c462-4f3e-91d7-6d512c576e23073424514/img_b8845f04-c462-4f3e-91d7-6d512c576e23.png"}
+```
+
 ## TODO
 
 * Remap resulting thumbnail to external URL
