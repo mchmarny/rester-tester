@@ -8,7 +8,7 @@ Rest server to test serverless usage patterns
 
 ```
 docker build -t rester-tester .
-docker run -p 8080:8080 server-starter:latest
+docker run -p 8080:8080 rester-tester:latest
 ```
 
 ### Image
