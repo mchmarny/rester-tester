@@ -1,10 +1,21 @@
 # rester-tester
-Rest server to test serverless usage patterns
-
-
-
+Simple REST server to test serverless usage patterns
 
 ## Run
+
+#### Dependancies 
+
+```
+make deps
+```
+
+#### Locally 
+
+```
+make run
+```
+
+#### Locally in Docker
 
 ```
 docker build -t rester-tester .
@@ -12,7 +23,6 @@ docker run -p 8080:8080 rester-tester:latest
 ```
 
 ## Use
-
 
 ### Ping
 Basic GET test
@@ -37,7 +47,7 @@ curl http://localhost:8080/ping
 
 ### Image
 
-Makes PNG thumbnail from video. To test, pass URL using Curl
+Makes PNG thumbnail from video URL. Will test whether the app can execute external ffmpeg command.
 
 ```
 curl -X POST -H "Content-Type: application/json" http://localhost:8080/image \
@@ -61,5 +71,4 @@ curl -X POST -H "Content-Type: application/json" http://localhost:8080/image \
 
 ## TODO
 
-* Remap resulting thumbnail to external URL
 * Push images to distributed object store 
