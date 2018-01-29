@@ -90,6 +90,8 @@ func getImageProcessEndpointInfo(w http.ResponseWriter, r *http.Request) {
 
 func getImageProcessEndpoint(w http.ResponseWriter, r *http.Request) {
 
+	start := time.Now()
+
 	w.Header().Set("Content-Type", "application/json")
 
 	var req ThumbnailRequest
@@ -120,11 +122,14 @@ func getImageProcessEndpoint(w http.ResponseWriter, r *http.Request) {
 
 	// update status
 	state.Status = fmt.Sprint(StatusProcessed)
-	state.Message = "Completed"
 	state.ThumbnailURL = thumbPath
 
 	// TODO: Post to object store
 	logger.Printf("Thumbnail: %s", thumbPath)
+
+	elapsed := time.Since(start)
+	state.Message = fmt.Sprintf("Completed in %s", elapsed)
+
 	json.NewEncoder(w).Encode(state)
 
 }

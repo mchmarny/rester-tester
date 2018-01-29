@@ -65,7 +65,7 @@ curl -X POST -H "Content-Type: application/json" http://localhost:8080/image \
         "width":200,
         "height":200
     },
-    "message":"Processing...",
+    "message":"Completed in 1.016136195s",
     "thumb/img_8acd94cd-4035-4c62-b4d7-d6c6cb03a88d.png"
 }
 ```
