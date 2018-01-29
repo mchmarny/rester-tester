@@ -1,4 +1,5 @@
-# rester-tester
+# rester-tester [![Build Status](https://travis-ci.org/mchmarny/rester-tester.svg?branch=master)](https://travis-ci.org/mchmarny/rester-tester)
+
 Simple REST server to test serverless usage patterns
 
 ## Run
