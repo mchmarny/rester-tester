@@ -1,7 +1,7 @@
 
 # Go parameters
 DOCKER_USERNAME=mchmarny
-GCP_PROJECT_NAME=mchmarny-dev
+GCP_PROJECT_NAME=f9s-lab
 BINARY_NAME=rester-tester
 
 all: test
@@ -20,13 +20,13 @@ clean:
 	rm -f ./bin/$(BINARY_NAME)
 
 run: build
-	bin/$(BINARY_NAME) --port 8888
+	bin/$(BINARY_NAME)
 
 deps:
 	go get -u github.com/tools/godep
 	godep restore
 
-gcr:
+gcp:
 	gcloud container builds submit --tag gcr.io/$(GCP_PROJECT_NAME)/$(BINARY_NAME):latest .
 
 docker:

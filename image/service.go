@@ -54,15 +54,27 @@ func (s RequestStatusType) IsSet() bool {
 
 const (
 	// StatusUndefined is the deafult state of status (not set)
-	StatusUndefined RequestStatusType = iota // 0
-	StatusProcessed                          // 1
-	StatusFailed                             // 2
+	StatusUndefined     RequestStatusType = iota // 0
+	StatusProcessed                              // 1
+	StatusFailed                                 // 2
+	ThumbnailFolderPath = "/thumb/"              //TODO Create a cleaner implementation
 )
 
 // LoadRouts loads routes to the passed in router
 func LoadRouts(router *mux.Router) {
+
+	if _, err := os.Stat("." + ThumbnailFolderPath); os.IsNotExist(err) {
+		os.MkdirAll("."+ThumbnailFolderPath, os.ModePerm)
+	}
+
+	// static
+	router.PathPrefix(ThumbnailFolderPath).Handler(http.StripPrefix(ThumbnailFolderPath,
+		http.FileServer(http.Dir("."+ThumbnailFolderPath))))
+
+	// routes
 	router.HandleFunc("/image", getImageProcessEndpoint).Methods("POST")
 	router.HandleFunc("/image", getImageProcessEndpointInfo).Methods("GET")
+
 }
 
 func getImageProcessEndpointInfo(w http.ResponseWriter, r *http.Request) {

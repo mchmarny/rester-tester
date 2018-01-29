@@ -1,19 +1,19 @@
 apiVersion: heliopolis.dev/v1alpha1
 kind: HelioService
 metadata:
-  name: rester-tester
+  name: demo
   namespace: default
 spec:
-  domainSuffix: rester-tester.googlecustomer.net
+  domainSuffix: demo.googlecustomer.net
   rollout:
     traffic:
-    - revisionTemplate: restertestertemplate
+    - revisionTemplate: demotemplate
       percent: 100
 ---
 apiVersion: heliopolis.dev/v1alpha1
 kind: HelioRevisionTemplate
 metadata:
-  name: restertestertemplate
+  name: demotemplate
   namespace: default
 spec:
   template:
@@ -21,6 +21,8 @@ spec:
       serviceType: container
       env:
         - name: TARGET
-          value: latest-rester-tester
+          value: demolatest
       containerSpec:
-        image: gcr.io/mchmarny-dev/rester-tester:latest
+        #image: docker.io/mchmarny/rester-tester:latest
+        image: gcr.io/f9s-lab/rester-tester:latest
+        

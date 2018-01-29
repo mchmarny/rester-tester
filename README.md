@@ -11,13 +11,16 @@ docker build -t rester-tester .
 docker run -p 8080:8080 rester-tester:latest
 ```
 
+## Use
+
+
 ### Ping
 Basic GET test
 
 ##### Request
 
 ```
-curl http://localhost:8080/ping
+curl http://localhost:8080/ping 
 ```
 
 ##### Response

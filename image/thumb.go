@@ -2,7 +2,6 @@ package image
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/url"
 	"os"
 	"os/exec"
@@ -73,14 +72,8 @@ func makeThumbnail(key string, req *ThumbnailRequest) (path string, err error) {
 		return "", fmt.Errorf("Not properly formatted URL: %s -> %v", req.Src, err)
 	}
 
-	// temp dir
-	tmpDir, err := ioutil.TempDir("", key)
-	if err != nil {
-		return "", err
-	}
-
 	fileName := fmt.Sprintf("img_%s.png", key)
-	thumbnailPath := filepath.Join(tmpDir, fileName)
+	thumbnailPath := filepath.Join("."+ThumbnailFolderPath, fileName)
 	thumbnailFile, err := os.Create(thumbnailPath)
 	if err != nil {
 		return "", err
