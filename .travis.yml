@@ -7,10 +7,11 @@
     - 1.9
     - tip
   install:
-    - go get github.com/golang/lint/golint
-    - go get -u github.com/golang/dep/cmd/dep
-    - dep ensure
+    - go get -u github.com/golang/lint/golint
+    - go get -u github.com/tools/godep
+    - godep restore
   script:
+    - go test -v --short ./...
     - go build -v
     - go vet $(go list ./... | grep -v vendor)
     - test -z "$(golint ./... | grep -v vendor | tee /dev/stderr)"
