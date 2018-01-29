@@ -108,7 +108,8 @@ func getImageProcessEndpoint(w http.ResponseWriter, r *http.Request) {
 
 	// update status
 	state.Status = fmt.Sprint(StatusProcessed)
-	state.ThumbnailURL = thumbPath //TODO: replace with object store URL
+	state.Message = "Completed"
+	state.ThumbnailURL = thumbPath
 
 	// TODO: Post to object store
 	logger.Printf("Thumbnail: %s", thumbPath)
