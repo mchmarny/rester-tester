@@ -17,19 +17,15 @@ supervisord.pid
 .vscode/*
 .dev
 .DS_Store
-
-## Coverage Files
 cover.out
 coverage.xml
-
 !**/.gitkeep
-
-## don't commit local config override files
 config_local.py
 bin/
 vendor/*
 
-## bin
+## App specific 
 rester-tester
 thumb
+demo.*
 
