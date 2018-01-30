@@ -33,7 +33,8 @@ run-docker:
 	docker build -t $(BINARY_NAME) .
 	docker run -p 8080:8080 server-starter:latest
 
-dockerhub: docker
+dockerhub:
+	docker build -t $(BINARY_NAME) .
 	docker tag $(BINARY_NAME):latest $(DOCKER_USERNAME)/$(BINARY_NAME):latest
 	docker push $(DOCKER_USERNAME)/$(BINARY_NAME):latest
 
