@@ -1,7 +1,7 @@
 
 # Go parameters
 DOCKER_USERNAME=mchmarny
-GCP_PROJECT_NAME=f9s-lab
+GCP_PROJECT_NAME=serverless-lab
 BINARY_NAME=rester-tester
 
 all: test
