@@ -16,6 +16,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/mchmarny/rester-tester/image"
 	"github.com/mchmarny/rester-tester/ping"
+	"github.com/mchmarny/rester-tester/prime"
 )
 
 const (
@@ -37,6 +38,7 @@ func main() {
 
 	ping.LoadRouts(router)
 	image.LoadRouts(router)
+	prime.LoadRouts(router)
 
 	httpserver := &http.Server{
 		Addr:         fmt.Sprintf("0.0.0.0:%d", *port),

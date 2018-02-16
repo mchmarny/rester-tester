@@ -46,6 +46,36 @@ curl http://localhost:8080/ping
 }
 ```
 
+### Prime
+Basic max prime number calculator
+
+##### Request
+
+To get max prime using defaults
+
+```
+curl http://localhost:8080/prime 
+```
+
+To pass max number as argument to prime calculator 
+
+```
+curl http://localhost:8080/prime/50000000
+```
+
+##### Response
+
+```
+{
+     "prime": {
+          "max": 50000000,
+          "host_name": "056504ae4039",
+          "val": 49999991
+     }
+}
+```
+
+
 ### Image
 
 Makes PNG thumbnail from video URL. Will test whether the app can execute external ffmpeg command.
