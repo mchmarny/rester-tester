@@ -1,0 +1,27 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Route
+metadata:
+  name: rester
+  namespace: default
+spec:
+  traffic:
+  - configurationName: rester-config-v1
+    percent: 100
+---
+apiVersion: serving.knative.dev/v1alpha1
+kind: Configuration
+metadata:
+  name: rester-config-v1
+  namespace: default
+spec:
+  revisionTemplate:
+    metadata:
+      labels:
+        knative.dev/type: container
+    spec:
+      container:
+        image: gcr.io/knative-samples/rester-tester:latest
+        imagePullPolicy: Always
+        env:
+          - name: T_VERSION
+            value: "blue"

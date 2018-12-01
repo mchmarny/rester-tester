@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:1.10.1 as builder
 
 # install ffmpeg
 RUN apt-get update && apt-get install -y ffmpeg
@@ -12,9 +12,16 @@ ADD . $SRC_DIR
 RUN cd $SRC_DIR
 
 # restore to pinnned versions of dependancies 
-RUN go get github.com/tools/godep
-RUN godep restore
+RUN go get github.com/golang/dep/cmd/dep
+RUN dep ensure
 
-RUN go build
+# build
+RUN CGO_ENABLED=0 GOOS=linux go build -a -o rester-tester \
+    -tags netgo -installsuffix netgo .
 
-ENTRYPOINT $SRC_DIR/rester-tester
+# build the clean image
+FROM scratch as runner
+# copy the app
+COPY --from=builder /go/src/github.com/mchmarny/rester-tester/rester-tester .
+
+ENTRYPOINT ["/rester-tester"]

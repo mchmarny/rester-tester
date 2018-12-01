@@ -1,16 +1,12 @@
 
 # Go parameters
 DOCKER_USERNAME=mchmarny
-GCP_PROJECT_NAME=serverless-lab
+GCP_PROJECT_NAME=knative-samples
 BINARY_NAME=rester-tester
 
 all: test
 build:
 	go build -o ./bin/$(BINARY_NAME) -v
-
-build-linux:
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/$(BINARY_NAME) \
-	-v -a --ldflags '-extldflags "-static"' -tags netgo -installsuffix netgo
 
 test:
 	go test -v ./...
@@ -23,11 +19,12 @@ run: build
 	bin/$(BINARY_NAME)
 
 deps:
-	go get -u github.com/tools/godep
-	godep restore
+	go get -u github.com/golang/dep/cmd/dep
+	dep ensure
 
 gcp:
-	gcloud container builds submit --tag gcr.io/$(GCP_PROJECT_NAME)/$(BINARY_NAME):latest .
+	gcloud container builds submit --project=$(GCP_PROJECT_NAME) \
+		--tag gcr.io/$(GCP_PROJECT_NAME)/$(BINARY_NAME):latest .
 
 run-docker:
 	docker build -t $(BINARY_NAME) .
