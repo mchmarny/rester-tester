@@ -66,6 +66,8 @@ func main() {
 func getRoutes(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode([...]string{
 		"/ping/",
+		"/image/",
+		"/prime/",
 	})
 }
 
