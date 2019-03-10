@@ -23,8 +23,9 @@ deps:
 	dep ensure
 
 gcp:
-	gcloud container builds submit --project=$(GCP_PROJECT_NAME) \
-		--tag gcr.io/$(GCP_PROJECT_NAME)/$(BINARY_NAME):latest .
+	gcloud builds submit \
+		--project=$(GCP_PROJECT_NAME) \
+		--tag gcr.io/$(GCP_PROJECT_NAME)/$(BINARY_NAME)
 
 run-docker:
 	docker build -t $(BINARY_NAME) .
